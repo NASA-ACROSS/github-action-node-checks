@@ -1,0 +1,40 @@
+name: Node Checks
+description: Run checks for Node.js projects
+
+inputs:
+  check-type:
+    description: Type of check to run (format, lint, test, types)
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install dependencies
+      shell: bash
+      run: npm ci
+
+    - name: Check Formatting
+      if: inputs.check-type == 'format'
+      shell: bash
+      run: npm run format:check
+
+    - name: Run Linting
+      if: inputs.check-type == 'lint'
+      shell: bash
+      run: npm run lint
+
+    - name: Run Tests
+      if: inputs.check-type == 'test'
+      shell: bash
+      run: npm run test
+
+    - name: Run Type Checking
+      if: inputs.check-type == 'types'
+      shell: bash
+      run: npm run check
