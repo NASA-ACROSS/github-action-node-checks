@@ -16,22 +16,27 @@ runs:
         cache: 'npm'
 
     - name: Install dependencies
+      shell: bash
       run: npm ci
 
     - name: Check Formatting
       if: inputs.check-type == 'format'
+      shell: bash
       run: npm run format
 
     - name: Run Linting
       if: inputs.check-type == 'lint'
       env:
           NODE_OPTIONS: --max-old-space-size=4096 # Increase memory to 4GB
+      shell: bash
       run: npm run lint
 
     - name: Run Tests
       if: inputs.check-type == 'test'
+      shell: bash
       run: npm run test
 
     - name: Run Type Checking
       if: inputs.check-type == 'types'
+      shell: bash
       run: npm run check
