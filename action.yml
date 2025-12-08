@@ -22,7 +22,7 @@ runs:
     - name: Check Formatting
       if: inputs.check-type == 'format'
       shell: bash
-      run: npm run format:check
+      run: npm run format
 
     - name: Run Linting
       if: inputs.check-type == 'lint'
