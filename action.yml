@@ -31,6 +31,11 @@ runs:
       shell: bash
       run: npm run lint
 
+    - name: Install Playwright Browsers
+      if: inputs.check-type == 'test'
+      shell: bash
+      run: npx playwright install --with-deps
+      
     - name: Run Tests
       if: inputs.check-type == 'test'
       shell: bash
