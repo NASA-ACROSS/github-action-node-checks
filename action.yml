@@ -12,8 +12,8 @@ runs:
     - name: Setup Node
       uses: actions/setup-node@v6
       with:
-        node-version: '20'
-        cache: 'npm'
+        node-version: "20"
+        cache: "npm"
 
     - name: Install dependencies
       shell: bash
@@ -27,7 +27,7 @@ runs:
     - name: Run Linting
       if: inputs.check-type == 'lint'
       env:
-          NODE_OPTIONS: --max-old-space-size=4096 # Increase memory to 4GB
+        NODE_OPTIONS: --max-old-space-size=8192 # Increase memory to avoid OOM
       shell: bash
       run: npm run lint
 
@@ -35,7 +35,7 @@ runs:
       if: inputs.check-type == 'test'
       shell: bash
       run: npx playwright install --with-deps
-      
+
     - name: Run Tests
       if: inputs.check-type == 'test'
       shell: bash
