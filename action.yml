@@ -24,12 +24,17 @@ runs:
       shell: bash
       run: npm run format
 
+    - name: Get changed files
+      if: inputs.check-type == 'lint' # linting OOMs on CI, so only run on changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v47
+
     - name: Run Linting
       if: inputs.check-type == 'lint'
       env:
         NODE_OPTIONS: --max-old-space-size=8192 # Increase memory to avoid OOM
       shell: bash
-      run: npm run lint
+      run: npm run lint -- ${{ steps.changed-files.outputs.all_changed_files }}
 
     - name: Install Playwright Browsers
       if: inputs.check-type == 'test'
