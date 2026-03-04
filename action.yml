@@ -5,6 +5,15 @@ inputs:
   check-type:
     description: Type of check to run (format, lint, test, types)
     required: true
+  across-test-access-token:
+    description: ACROSS access token, required for unit tests since there is no live server
+    required: false
+  across-server-id:
+    description: ACROSS server ID
+    required: false
+  across-server-secret:
+    description: ACROSS server secret
+    required: false
 
 runs:
   using: composite
@@ -44,6 +53,10 @@ runs:
     - name: Run Tests
       if: inputs.check-type == 'test'
       shell: bash
+      env:
+        ACROSS_TEST_ACCESS_TOKEN: ${{ inputs.across-test-access-token }}
+        ACROSS_SERVER_ID: ${{ inputs.across-server-id }}
+        ACROSS_SERVER_SECRET: ${{ inputs.across-server-secret }}
       run: npm run test
 
     - name: Run Type Checking
