@@ -5,6 +5,10 @@ inputs:
   check-type:
     description: Type of check to run (format, lint, test, types)
     required: true
+  framework:
+    description: Framework being used (e.g., svelte, react)
+    required: false
+    default: "svelte"
   across-test-access-token:
     description: ACROSS access token, required for unit tests since there is no live server
     required: false
@@ -37,6 +41,13 @@ runs:
       if: inputs.check-type == 'lint' # linting OOMs on CI, so only run on changed files
       id: changed-files
       uses: tj-actions/changed-files@v47
+
+    - name: Generate SvelteKit types/config
+      # svelte linting needs svelte-kit types/config to work
+      if: inputs.check-type == 'lint' && inputs.framework == 'svelte'
+      shell: bash
+      # no install since svelte-kit is a local dependency and we want to use that version
+      run: npx --no-install svelte-kit sync
 
     - name: Run Linting
       if: inputs.check-type == 'lint'
