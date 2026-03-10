@@ -45,6 +45,9 @@ runs:
     - name: Generate SvelteKit types/config
       # svelte linting needs svelte-kit types/config to work
       if: inputs.check-type == 'lint' && inputs.framework == 'svelte'
+      env:
+        PUBLIC_BUILD_VERSION: check
+        PUBLIC_RUNTIME_ENV: check
       shell: bash
       # no install since svelte-kit is a local dependency and we want to use that version
       run: npx --no-install svelte-kit sync
