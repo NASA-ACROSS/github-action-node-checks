@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/NASA-ACROSS/github-action-node-checks/compare/v1.0.0...v1.0.1) (2026-04-03)
+
+
+### Bug Fixes
+
+* add release-please manifest and config ([4068872](https://github.com/NASA-ACROSS/github-action-node-checks/commit/4068872e88351c8867ccc0ea7324c1d4ddcca7e6))
+
 ## 1.0.0 (2026-04-03)
 
 
