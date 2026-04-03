@@ -12,7 +12,7 @@ permissions:
   id-token: write
   deployments: write
   pull-requests: write
-  contents: read
+  contents: write
 
 jobs:
   release-please:
@@ -36,6 +36,10 @@ jobs:
       - name: Create major and minor tags
         if: ${{ steps.release.outputs.release_created }}
         run: |
+          # Set identity for the git commands
+          git config user.name github-actions[bot]
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           MAJOR=${{ steps.release.outputs.major }}
           MINOR=${{ steps.release.outputs.minor }}
 
