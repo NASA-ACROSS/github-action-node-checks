@@ -1,0 +1,46 @@
+name: Release Please
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  id-token: write
+  deployments: write
+  pull-requests: write
+  contents: read
+
+jobs:
+  release-please:
+    runs-on: "ubuntu-latest"
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+      version: ${{ steps.release.outputs.version }}
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+      - name: Create major and minor tags
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          # Set identity for the git commands
+          git config user.name github-actions[bot]
+
+          MAJOR=${{ steps.release.outputs.major }}
+          MINOR=${{ steps.release.outputs.minor }}
+
+          # Force create and push the aliased tags (e.g., v1 and v1.2)
+          for TAG in "v$MAJOR" "v$MAJOR.$MINOR"; do
+            echo "Publishing $TAG..."
+            git tag -f "$TAG"
+            git push origin "$TAG" --force
+          done
