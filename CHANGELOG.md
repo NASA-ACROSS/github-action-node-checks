@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.2](https://github.com/NASA-ACROSS/github-action-node-checks/compare/v1.0.1...v1.0.2) (2026-04-03)
+
+
+### Bug Fixes
+
+* rm bot for now ([e528463](https://github.com/NASA-ACROSS/github-action-node-checks/commit/e5284636b7be483dc9403f28edc3b1753a8bdc23))
+* set perms and add bot back ([e48cb69](https://github.com/NASA-ACROSS/github-action-node-checks/commit/e48cb69dff2cf5c345407fb2eb7ca1966c6092aa))
+
 ## [1.0.1](https://github.com/NASA-ACROSS/github-action-node-checks/compare/v1.0.0...v1.0.1) (2026-04-03)
 
 
