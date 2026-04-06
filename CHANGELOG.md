@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/NASA-ACROSS/github-action-node-checks/compare/v1.0.2...v1.0.3) (2026-04-06)
+
+
+### Bug Fixes
+
+* do not set env vars ([2125d7e](https://github.com/NASA-ACROSS/github-action-node-checks/commit/2125d7ea7c88b8e372f5d5a1d311470fec167817))
+
 ## [1.0.2](https://github.com/NASA-ACROSS/github-action-node-checks/compare/v1.0.1...v1.0.2) (2026-04-03)
 
 
