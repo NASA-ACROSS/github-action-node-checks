@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/NASA-ACROSS/github-action-node-checks/compare/v1.0.4...v1.0.5) (2026-07-14)
+
+
+### Bug Fixes
+
+* change CI environment variable from true to 1 ([6689146](https://github.com/NASA-ACROSS/github-action-node-checks/commit/6689146ca01f6966cb344095e9dd4b0b2598f64c))
+
 ## [1.0.4](https://github.com/NASA-ACROSS/github-action-node-checks/compare/v1.0.3...v1.0.4) (2026-07-14)
 
 
