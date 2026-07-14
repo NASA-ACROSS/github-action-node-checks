@@ -67,10 +67,8 @@ runs:
     - name: Run Tests
       if: inputs.check-type == 'test'
       shell: bash
-      # env:
-      #   ACROSS_TEST_ACCESS_TOKEN: ${{ inputs.across-test-access-token }}
-      #   ACROSS_SERVER_ID: ${{ inputs.across-server-id }}
-      #   ACROSS_SERVER_SECRET: ${{ inputs.across-server-secret }}
+      env:
+        CI: true
       run: npm run test
 
     - name: Run Type Checking
