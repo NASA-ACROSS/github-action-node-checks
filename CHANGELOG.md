@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/NASA-ACROSS/github-action-node-checks/compare/v1.0.3...v1.0.4) (2026-07-14)
+
+
+### Bug Fixes
+
+* set CI environment for test step in action.yml ([b800fea](https://github.com/NASA-ACROSS/github-action-node-checks/commit/b800feadc57a9c863cb42861edb095527e3de38c))
+
 ## [1.0.3](https://github.com/NASA-ACROSS/github-action-node-checks/compare/v1.0.2...v1.0.3) (2026-04-06)
 
 
