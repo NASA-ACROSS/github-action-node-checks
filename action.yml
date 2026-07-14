@@ -68,7 +68,7 @@ runs:
       if: inputs.check-type == 'test'
       shell: bash
       env:
-        CI: true
+        CI: 1
       run: npm run test
 
     - name: Run Type Checking
